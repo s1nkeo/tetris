@@ -4,5 +4,5 @@ using namespace std;
 
 void render() {
     system("cls");
-    printf("⬛\n");
+    cout << "⬛\n";
 }
