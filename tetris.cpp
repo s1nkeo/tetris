@@ -1,30 +1,25 @@
-#include <iostream>
-#include <cstdlib>
 #include "tetris.h"
-using namespace std;
+#include "render.h"
 
-Game::Game() : y(0) {
-
+Game::Game() : board(10, 20) {
+    // конструктор
 }
 
 void Game::init() {
-    y = 0;
-}
-
-void Game::update() {
-    y++;
-    if (y > 10) y = 0;
+    board.clear();
+    
+    // Тестовые клетки для демонстрации
+    board.setCell(3, 18, 1);
+    board.setCell(4, 18, 1);
+    board.setCell(5, 18, 1);
+    board.setCell(5, 17, 1);
 }
 
 void Game::render() {
-#ifdef _WIN32
-    system("cls");
-#else
-    system("clear");
-#endif
+    Render::drawBoard(board);
+}
 
-    for (int i = 0; i < y; ++i)
-        cout << endl;
-
-    cout << "⬛" << endl;
+void Game::update() {
+    // Здесь будет логика игры
+    // Пока просто рисуем статичное поле
 }

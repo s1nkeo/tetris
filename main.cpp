@@ -2,14 +2,18 @@
 #include <windows.h>
 #include "tetris.h"
 
+using namespace std;
+
 int main() {
     Game game;
     game.init();
 
-    while(true) {
-        game.update();
+    // Тестовая отрисовка
+    for (int i = 0; i < 5; i++) {
         game.render();
-        Sleep(500);  // Windows Sleep (milliseconds)
+        cout << "Frame: " << i + 1 << endl;
+        Sleep(1000);  // Windows Sleep (milliseconds)
     }
+    
     return 0;
 }
