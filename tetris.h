@@ -1,6 +1,15 @@
 #ifndef TETRIS_H
 #define TETRIS_H
 
-void render(); // render of game in terminal
+class Game {
+    private:
+        int y; // vertical coordinate y
 
-#endif TETRIS_H
+    public:
+        Game();
+        void init();
+        void update();
+        void render();
+};
+
+#endif
