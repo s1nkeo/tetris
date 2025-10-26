@@ -60,5 +60,5 @@ void Render::drawBoard(const Board& board) {
     }
     cout << "+" << endl;
     
-    cout << "Controls: ← → ↓, SPACE, Q" << endl;
+    cout << "Controls: [A] left, [D] right, [S] down, [SPACE] rotate, [Q] quit" << endl;
 }
