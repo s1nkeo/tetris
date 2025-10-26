@@ -8,7 +8,7 @@ int main() {
     Game game;
     game.init();
 
-    // Тестовая отрисовка
+    // Test
     for (int i = 0; i < 5; i++) {
         game.render();
         cout << "Frame: " << i + 1 << endl;

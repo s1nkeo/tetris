@@ -2,14 +2,14 @@
 #include <stdexcept>
 
 Board::Board(int w, int h) : width(w), height(h) {
-    grid.resize(height, std::vector<int>(width, 0)); // Инициализация нулями
+    grid.resize(height, std::vector<int>(width, 0)); 
 }
 
 int Board::getCell(int x, int y) const {
     if (x >= 0 && x < width && y >= 0 && y < height) {
-        return grid[y][x];  // Осторожно: grid[y][x] - строка, затем столбец
+        return grid[y][x]; 
     }
-    return -1; // или бросить исключение
+    return -1; 
 }
 
 void Board::setCell(int x, int y, int value) {
@@ -31,11 +31,10 @@ bool Board::isCollision(const std::vector<std::vector<int>>& piece, int posX, in
     
     for (int y = 0; y < pieceSize; y++) {
         for (int x = 0; x < pieceSize; x++) {
-            if (piece[y][x] != 0) { // Если часть фигуры есть
+            if (piece[y][x] != 0) { 
                 int boardX = posX + x;
                 int boardY = posY + y;
                 
-                // Проверка границ и столкновений
                 if (boardX < 0 || boardX >= width || boardY >= height) {
                     return true;
                 }

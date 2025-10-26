@@ -12,15 +12,6 @@ void Render::clearScreen() {
 #endif
 }
 
-void Render::drawCell(int value) {
-    if (value == 0) {
-        cout << "· ";  // пустая клетка
-    } else {
-        cout << "■ ";  // занятая клетка
-    }
-}
-
-// Альтернативная версия в render.cpp (если нужны простые символы)
 void Render::drawBoard(const Board& board) {
     clearScreen();
     
@@ -30,30 +21,30 @@ void Render::drawBoard(const Board& board) {
     int width = board.getWidth();
     int height = board.getHeight();
     
-    // Верхняя граница
+    // Upper board
     cout << "+";
     for (int x = 0; x < width; x++) {
         cout << "--";
     }
     cout << "+" << endl;
     
-    // Игровое поле
+    // Playground
     for (int y = 0; y < height; y++) {
-        cout << "|";  // левая граница
+        cout << "|";  // left
         
         for (int x = 0; x < width; x++) {
             int cell = board.getCell(x, y);
             if (cell == 0) {
-                cout << ". ";  // пустая клетка
+                cout << ". ";  // space
             } else {
-                cout << "# ";  // занятая клетка
+                cout << "# ";   
             }
         }
         
-        cout << "|" << endl;  // правая граница
+        cout << "|" << endl;  // right
     }
     
-    // Нижняя граница
+    // Low board
     cout << "+";
     for (int x = 0; x < width; x++) {
         cout << "--";
