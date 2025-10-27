@@ -12,6 +12,21 @@ void Render::clearScreen() {
 #endif
 }
 
+void Render::drawCell(int value) {
+    if (value == 0) {
+        cout << ". ";  // Empty cell
+    } else {
+        // Different symbols or colors for different piece types
+        // For now, using # for all pieces
+        cout << "# ";
+        
+        // Future: Add colors here based on value
+        // if (value == 1) cout << "I ";
+        // else if (value == 2) cout << "O ";
+        // etc.
+    }
+}
+
 void Render::drawBoard(const Board& board) {
     clearScreen();
     
@@ -21,35 +36,32 @@ void Render::drawBoard(const Board& board) {
     int width = board.getWidth();
     int height = board.getHeight();
     
-    // Upper board
+    // Top border
     cout << "+";
     for (int x = 0; x < width; x++) {
         cout << "--";
     }
     cout << "+" << endl;
     
-    // Playground
+    // Game field
     for (int y = 0; y < height; y++) {
-        cout << "|";  // left
+        cout << "|";  // Left border
         
         for (int x = 0; x < width; x++) {
             int cell = board.getCell(x, y);
-            if (cell == 0) {
-                cout << ". ";  // space
-            } else {
-                cout << "# ";   
-            }
+            drawCell(cell);
         }
         
-        cout << "|" << endl;  // right
+        cout << "|" << endl;  // Right border
     }
     
-    // Low board
+    // Bottom border
     cout << "+";
     for (int x = 0; x < width; x++) {
         cout << "--";
     }
     cout << "+" << endl;
     
-    cout << "Controls: [A] left, [D] right, [S] down, [SPACE] rotate, [Q] quit" << endl;
+    // Controls
+    cout << "Controls: A-left, D-right, S-down, SPACE-rotate, Q-quit" << endl;
 }

@@ -1,40 +1,36 @@
 #include <iostream>
-#include "piece.h"
+#include <windows.h>
+#include <conio.h>
+#include "tetris.h"
 
 using namespace std;
 
-// Helper function to display a shape
-void printShape(const vector<vector<int>>& shape) {
-    for (const auto& row : shape) {
-        for (int cell : row) {
-            cout << (cell ? "# " : ". "); // # for filled, . for empty
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
 int main() {
-    // Test all 7 piece types
-    Piece pieces[] = {
-        Piece(PieceType::I),
-        Piece(PieceType::O),
-        Piece(PieceType::T),
-        Piece(PieceType::L),
-        Piece(PieceType::J),
-        Piece(PieceType::S),
-        Piece(PieceType::Z)
-    };
-    
-    const char* names[] = {"I", "O", "T", "L", "J", "S", "Z"};
-    
-    cout << "All Tetromino Pieces:" << endl;
-    cout << "=====================" << endl;
-    
-    for (int i = 0; i < 7; i++) {
-        cout << "Piece: " << names[i] << endl;
-        printShape(pieces[i].getShape());
+    Game game;
+    game.init();
+
+    cout << "Tetris - Piece Spawning Test" << endl;
+    cout << "Press any key to start..." << endl;
+    getch();
+
+    // Game loop
+    while (!game.isGameOver()) {
+        game.render();
+        
+        // Check for input
+        if (_kbhit()) {
+            char key = _getch();
+            if (key == 'q' || key == 'Q') break;
+            game.handleInput(key);
+        }
+        
+        game.update();
+        Sleep(500);
     }
+
+    game.render(); // Final render
+    cout << "Game ended. Press any key to exit." << endl;
+    getch();
     
     return 0;
 }
